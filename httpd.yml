@@ -1,17 +1,14 @@
 ---
-- name: Install and Configure HTTPD
-  hosts: all
-  become: true
-
-  tasks:
-
-    - name: Install httpd
-      ansible.builtin.apt:
-        name: apache2
-        state: present
-
-    - name: Start and enable httpd
-      ansible.builtin.systemd:
-        name: httpd
-        state: started
-        enabled: true
+ - name: Install and Configure HTTPD
+   hosts: all
+   become: true
+   tasks:
+     - name: Install httpd
+       ansible.builtin.apt:
+         name: apache2
+         state: present
+     - name: Start and enable httpd
+       ansible.builtin.service:
+         name: apache2
+         state: started
+         enabled: true
